@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { Employee } from "../../model/auth";
 import errorHanlder from "../../utils/errorHandler";
