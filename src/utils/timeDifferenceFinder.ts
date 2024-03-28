@@ -11,7 +11,7 @@ export default function timeDifferenceFinder(clockIn: string, clockOut: string):
     const diffMinutes: number = Math.floor((diffMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
 
     // Format the result
-    const formattedDifference: string = `${diffHours} hours and ${diffMinutes} minutes`;
+    const formattedDifference: string = `${diffHours}:${diffMinutes}`;
 
     return formattedDifference;
 }

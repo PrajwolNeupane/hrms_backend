@@ -1,10 +1,9 @@
 import { authenticateUser } from "../middleware";
-import { setAttendance } from "../controller/Attendance";
+import { getAttendance, setAttendance } from "../controller/Attendance";
 import express from "express";
 
 const router = express.Router();
-router.post('/set', authenticateUser, setAttendance);
+router.post("/set", authenticateUser, setAttendance);
+router.get("/get", authenticateUser, getAttendance);
 
 export default router;
-
-
