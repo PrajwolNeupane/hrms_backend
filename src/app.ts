@@ -1,7 +1,7 @@
 import dbConnection from "./config/dbConnection";
 import express from "express";
 import auth from "./routes/auth";
-import attendanceRoutes from './routes/attendance';
+import attendanceRoutes from "./routes/attendance";
 import cookieParser from "cookie-parser";
 
 const port = 3000;
@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", auth);
-app.use("/attendance", attendanceRoutes)
+app.use("/attendance", attendanceRoutes);
 
 app.listen(port, async () => {
   console.log("-------------------------------------");
@@ -23,3 +23,5 @@ app.listen(port, async () => {
 
   await dbConnection;
 });
+
+export default app;

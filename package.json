@@ -1,7 +1,7 @@
 {
 	"description": "This is backend for Collab Project",
 	"main": "dist/app.js",
-	"type": "module",
+	"type": "commonjs",
 	"scripts": {
 		"test": "",
 		"build": "tsc",
