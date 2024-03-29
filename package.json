@@ -1,11 +1,12 @@
 {
 	"description": "This is backend for Collab Project",
-	"main": "app.ts",
+	"main": "dist/app.js",
 	"type": "module",
 	"scripts": {
 		"test": "",
 		"build": "tsc",
-		"dev": "ts-node-dev --respawn src/app.ts"
+		"dev": "ts-node-dev --respawn src/app.ts",
+		"start": "node dist/app.js"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.2",
