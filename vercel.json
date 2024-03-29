@@ -1,10 +1,10 @@
 {
     "rewrites": [
         {
-            "source": "/(.*)"
+            "destination": "/dist"
         },
         {
-            "destination": "/dist"
+            "source": "/(.*)"
         }
     ]
 }
