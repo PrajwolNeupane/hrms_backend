@@ -57,8 +57,8 @@ export default async function logIn(
 
     res.cookie("auth_token", token, {
       httpOnly: true,
-      sameSite: false,
-      secure: true,
+      sameSite: "none", // Change to 'none' if served over HTTPS
+      secure: true, // Only set this if served over HTTPS
     });
 
     res.json({
