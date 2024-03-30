@@ -21,7 +21,7 @@ const cors_1 = __importDefault(require("cors"));
 const port = 3000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: ["*"],
+    origin: ["*", process.env.CLIENT_URL],
     credentials: true,
 }));
 //"http://127.0.0.1:5500"
