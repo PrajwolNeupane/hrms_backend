@@ -4,16 +4,16 @@ import auth from "./routes/auth";
 import attendanceRoutes from "./routes/attendance";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import "dotenv/config";
 
 const port = 3000;
 const app = express();
 app.use(
   cors({
-    origin: ["*", process.env.CLIENT_URL],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
   })
 );
-//"http://127.0.0.1:5500"
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());

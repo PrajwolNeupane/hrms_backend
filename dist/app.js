@@ -18,13 +18,13 @@ const auth_1 = __importDefault(require("./routes/auth"));
 const attendance_1 = __importDefault(require("./routes/attendance"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
+require("dotenv/config");
 const port = 3000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: ["*", process.env.CLIENT_URL],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
 }));
-//"http://127.0.0.1:5500"
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
