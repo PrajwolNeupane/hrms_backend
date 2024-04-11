@@ -9,7 +9,7 @@ export default function generateAvatarUrl(
 
   // Function to get the contrast color (black or white) based on the background color
   function getContrastColor(hexColor: string) {
-    // Convert hex to RGB
+    // Hex to RGB
     let r = parseInt(hexColor.substr(1, 2), 16);
     let g = parseInt(hexColor.substr(3, 2), 16);
     let b = parseInt(hexColor.substr(5, 2), 16);
