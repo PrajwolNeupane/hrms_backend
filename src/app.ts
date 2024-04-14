@@ -1,6 +1,7 @@
 import dbConnection from "./config/dbConnection";
 import express from "express";
 import auth from "./routes/auth";
+import dash from "./routes/dash";
 import attendanceRoutes from "./routes/attendance";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", auth);
 app.use("/attendance", attendanceRoutes);
+app.use("/dash", dash);
 
 app.listen(port, async () => {
   console.log("-------------------------------------");

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dbConnection_1 = __importDefault(require("./config/dbConnection"));
 const express_1 = __importDefault(require("express"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const dash_1 = __importDefault(require("./routes/dash"));
 const attendance_1 = __importDefault(require("./routes/attendance"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 });
 app.use("/auth", auth_1.default);
 app.use("/attendance", attendance_1.default);
+app.use("/dash", dash_1.default);
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("-------------------------------------");
     console.log(`Server is listening at ${port}`);

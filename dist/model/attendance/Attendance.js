@@ -17,6 +17,8 @@ const AttendanceModel = new mongoose_1.default.Schema({
     clockOut: {
         type: String
     }
+}, {
+    timestamps: true
 });
 const Attendance = mongoose_1.default.model("Attedance", AttendanceModel);
 exports.default = Attendance;
