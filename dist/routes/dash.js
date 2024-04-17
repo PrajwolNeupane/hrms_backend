@@ -12,5 +12,6 @@ router.get("/", middleware_1.authenticateUser, DashBoard_1.getEmployeeDashBoardD
 router.get("/admin", middleware_1.authenticateAdmin, DashBoard_1.getAdminDashBoardData);
 router.get("/employee", middleware_1.authenticateAdmin, Employee_1.getEmployee);
 router.post("/employee/delete", middleware_1.authenticateAdmin, Employee_1.deleteEmployee);
+router.post("/employee/view", middleware_1.authenticateAdmin, Employee_1.viewEmploye);
 exports.default = router;
 //# sourceMappingURL=dash.js.map

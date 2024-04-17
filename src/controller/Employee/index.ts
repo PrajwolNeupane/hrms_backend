@@ -6,6 +6,7 @@ import forgetPassword from "./forgetPassword";
 import resetPassword from "./resetPassword";
 import getEmployee from "./getEmployee";
 import deleteEmployee from "./deleteEmployee";
+import viewEmploye from "./ViewEmployee";
 
 export {
   logIn,
@@ -16,4 +17,5 @@ export {
   resetPassword,
   getEmployee,
   deleteEmployee,
+  viewEmploye,
 };
