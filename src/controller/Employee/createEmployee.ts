@@ -50,7 +50,7 @@ export default async function createEmployee(
         date_joined: value.date_joined,
       });
 
-      // Save the Role
+      // Save the Role of Employee
       const savedRole = await role.save();
 
       // Create the Employee

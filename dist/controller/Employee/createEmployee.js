@@ -55,7 +55,7 @@ function createEmployee(req, res) {
                     name: value.role,
                     date_joined: value.date_joined,
                 });
-                // Save the Role
+                // Save the Role of Employee
                 const savedRole = yield role.save();
                 // Create the Employee
                 const employee = new auth_1.Employee({
