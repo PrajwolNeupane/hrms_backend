@@ -69,7 +69,7 @@ function createEmployee(req, res) {
                     photo: (0, avatarGenerator_1.default)(value.first_name, value.last_name), // Use value.first_name and value.last_name
                     dob: value.dob,
                     address: value.address,
-                    salary: 0,
+                    salary: value.salary,
                     pan_number: "",
                     date_joined: value.date_joined,
                     roles: [savedRole._id], // Assign the saved Role's _id
