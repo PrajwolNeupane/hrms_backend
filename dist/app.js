@@ -23,7 +23,11 @@ require("dotenv/config");
 const port = 3000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: [process.env.CLIENT_URL, "http://localhost:3001"],
+    origin: [
+        process.env.CLIENT_URL,
+        process.env.ADMIN_URL,
+        "http://localhost:3001",
+    ],
     credentials: true,
 }));
 app.use(express_1.default.urlencoded({ extended: false }));

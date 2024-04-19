@@ -6,7 +6,7 @@ import forgetPassword from "./forgetPassword";
 import resetPassword from "./resetPassword";
 import getEmployee from "./getEmployee";
 import deleteEmployee from "./deleteEmployee";
-import viewEmploye from "./ViewEmployee";
+import viewEmploye from "./viewEmployee";
 
 export {
   logIn,
