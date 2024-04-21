@@ -22,24 +22,36 @@ function forgetPassword(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             if (req.body.email) {
-                const generatedToken = (0, tokenGenerator_1.default)().toString();
-                const expireDate = new Date();
-                expireDate.setMinutes(expireDate.getMinutes() + 5);
-                var token = new auth_1.Token({
-                    token: `${generatedToken}`,
-                    expire_date: expireDate.toISOString(),
-                    valid_email: req.body.email,
-                });
-                yield token.save();
-                (0, forgetPasswordMailSender_1.default)({
-                    email: req.body.email,
-                    template: forgetPasswordTemplate_1.default,
-                    token: generatedToken,
-                });
-                return res.json({
-                    success: true,
-                    message: "Forget Password Token Sent",
-                });
+                const employee = yield auth_1.Employee.findOne({ email: req.body.email });
+                const admin = yield auth_1.Admin.findOne({ email: req.body.email });
+                if (employee || admin) {
+                    const generatedToken = (0, tokenGenerator_1.default)().toString();
+                    const expireDate = new Date();
+                    expireDate.setMinutes(expireDate.getMinutes() + 1);
+                    var token = new auth_1.Token({
+                        token: `${generatedToken}`,
+                        expire_date: expireDate.toISOString(),
+                        valid_email: req.body.email,
+                    });
+                    yield token.save();
+                    (0, forgetPasswordMailSender_1.default)({
+                        email: req.body.email,
+                        template: forgetPasswordTemplate_1.default,
+                        token: generatedToken,
+                    });
+                    return res.json({
+                        success: true,
+                        message: "Forget Password Token Sent",
+                    });
+                }
+                else {
+                    return (0, errorHandler_1.default)({
+                        res,
+                        code: 401,
+                        title: "Email is not found",
+                        message: "Invalid Email",
+                    });
+                }
             }
             else {
                 return (0, errorHandler_1.default)({

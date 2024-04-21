@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewEmploye = exports.deleteEmployee = exports.getEmployee = exports.resetPassword = exports.forgetPassword = exports.logOut = exports.auth = exports.createEmployee = exports.logIn = void 0;
+exports.viewEmploye = exports.deleteEmployee = exports.getEmployee = exports.resetPassword = exports.forgetPassword = exports.logOut = exports.auth = exports.createEmployee = exports.logIn = exports.raiseSalary = exports.editEmlpoyee = void 0;
 const createEmployee_1 = __importDefault(require("./createEmployee"));
 exports.createEmployee = createEmployee_1.default;
 const auth_1 = __importDefault(require("./auth"));
@@ -22,4 +22,8 @@ const deleteEmployee_1 = __importDefault(require("./deleteEmployee"));
 exports.deleteEmployee = deleteEmployee_1.default;
 const viewEmployee_1 = __importDefault(require("./viewEmployee"));
 exports.viewEmploye = viewEmployee_1.default;
+const raiseSalary_1 = __importDefault(require("./raiseSalary"));
+exports.raiseSalary = raiseSalary_1.default;
+const editEmployee_1 = __importDefault(require("./editEmployee"));
+exports.editEmlpoyee = editEmployee_1.default;
 //# sourceMappingURL=index.js.map

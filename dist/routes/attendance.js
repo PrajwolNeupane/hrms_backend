@@ -9,5 +9,6 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 router.post("/set", middleware_1.authenticateUser, Attendance_1.setAttendance);
 router.get("/get", middleware_1.authenticateUser, Attendance_1.getAttendance);
+router.post("/employees", middleware_1.authenticateUser, Attendance_1.getEmployeesAttendance);
 exports.default = router;
 //# sourceMappingURL=attendance.js.map

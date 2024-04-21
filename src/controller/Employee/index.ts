@@ -7,8 +7,12 @@ import resetPassword from "./resetPassword";
 import getEmployee from "./getEmployee";
 import deleteEmployee from "./deleteEmployee";
 import viewEmploye from "./viewEmployee";
+import raiseSalary from "./raiseSalary";
+import editEmlpoyee from "./editEmployee";
 
 export {
+  editEmlpoyee,
+  raiseSalary,
   logIn,
   createEmployee,
   auth,

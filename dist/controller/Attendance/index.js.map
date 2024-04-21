@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/controller/Attendance/index.ts"],"names":[],"mappings":";;;;;;AAAA,oEAA4C;AAGnC,wBAHF,uBAAa,CAGE;AAFtB,oEAA4C;AAEpB,wBAFjB,uBAAa,CAEiB"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/controller/Attendance/index.ts"],"names":[],"mappings":";;;;;;AAAA,oEAA4C;AAInC,wBAJF,uBAAa,CAIE;AAHtB,oEAA4C;AAGpB,wBAHjB,uBAAa,CAGiB;AAFrC,sFAA8D;AAEvB,iCAFhC,gCAAsB,CAEgC"}

@@ -11,7 +11,12 @@ import {
   forgetPassword,
   resetPassword,
 } from "../controller/Employee";
-import { createAdmin, logIn as logInAdmin } from "../controller/Admin";
+import {
+  changePassword,
+  createAdmin,
+  logIn as logInAdmin,
+  resetPassword as adminResetPassword,
+} from "../controller/Admin";
 import express from "express";
 
 const router = express.Router();
@@ -19,6 +24,7 @@ const router = express.Router();
 router.get("/", authenticateUser, auth);
 router.get("/signout", authenticateUser, logOut);
 router.post("/forgetpassword", forgetPassword);
+router.post("/admin/resetpassword", adminResetPassword);
 router.post("/resetpassword", resetPassword);
 router.post(
   "/employee/signup",
@@ -28,6 +34,11 @@ router.post(
 router.post("/employee/signin", logIn);
 
 router.post("/admin/signup", checkSuperAdmin, createAdmin);
+router.post(
+  "/admin/changepassword",
+  [authenticateUser, authenticateAdmin],
+  changePassword
+);
 router.post("/admin/signin", logInAdmin);
 
 export default router;
