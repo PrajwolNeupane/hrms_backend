@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const errorHandler_1 = __importDefault(require("../../utils/errorHandler"));
 const attendance_1 = require("../../model/attendance");
+const timeDifferenceFinder_1 = __importDefault(require("../..//utils/timeDifferenceFinder"));
 function getEmployeesAttendance(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const date = req.body.date;
@@ -23,13 +24,18 @@ function getEmployeesAttendance(req, res) {
                     $gte: new Date(date),
                     $lt: new Date(new Date(date).setDate(new Date(date).getDate() + 1)),
                 },
-            }).populate("employee_id"); // Populate the employee_id field
+            }).populate({
+                path: "employee_id",
+                populate: { path: "roles" }, // Populate the roles field
+            });
             const employeesPresent = attendance.reduce((acc, curr) => {
                 if (curr.clockIn && curr.clockOut) {
                     acc.push({
                         employee: curr.employee_id,
                         clockIn: curr.clockIn,
                         clockOut: curr.clockOut,
+                        createdAt: curr.createdAt,
+                        timeDifference: (0, timeDifferenceFinder_1.default)(curr === null || curr === void 0 ? void 0 : curr.clockIn, curr === null || curr === void 0 ? void 0 : curr.clockOut),
                     });
                 }
                 return acc;
