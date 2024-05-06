@@ -16,6 +16,7 @@ const router = express.Router();
 
 router.get("/", authenticateUser, getEmployeeDashBoardData);
 router.get("/admin", authenticateAdmin, getAdminDashBoardData);
+router.get("/admin/performance",authenticateAdmin,getAdminDashBoardData)
 router.get("/employee", authenticateAdmin, getEmployee);
 router.post("/employee/delete", authenticateAdmin, deleteEmployee);
 router.post("/employee/view", authenticateAdmin, viewEmploye);
