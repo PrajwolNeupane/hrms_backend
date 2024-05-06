@@ -18,7 +18,7 @@ export default async function getEmployeesAttendance(
       path: "employee_id",
       populate: { path: "roles" }, // Populate the roles field
     });
-
+    
     const employeesPresent = attendance.reduce((acc, curr) => {
       if (curr.clockIn && curr.clockOut) {
         acc.push({

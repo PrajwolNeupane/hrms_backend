@@ -3,6 +3,7 @@ import { authenticateAdmin, authenticateUser } from "../middleware";
 import {
   getEmployeeDashBoardData,
   getAdminDashBoardData,
+  getEmployeePerfomance,
 } from "../controller/DashBoard";
 import {
   deleteEmployee,
@@ -16,7 +17,7 @@ const router = express.Router();
 
 router.get("/", authenticateUser, getEmployeeDashBoardData);
 router.get("/admin", authenticateAdmin, getAdminDashBoardData);
-router.get("/admin/performance",authenticateAdmin,getAdminDashBoardData)
+router.get("/admin/performance", authenticateAdmin, getEmployeePerfomance);
 router.get("/employee", authenticateAdmin, getEmployee);
 router.post("/employee/delete", authenticateAdmin, deleteEmployee);
 router.post("/employee/view", authenticateAdmin, viewEmploye);

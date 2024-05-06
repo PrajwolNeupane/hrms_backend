@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/controller/DashBoard/index.ts"],"names":[],"mappings":";;;;;;AAAA,0FAAkE;AAGzD,mCAHF,kCAAwB,CAGE;AAFjC,oFAA4D;AAEzB,gCAF5B,+BAAqB,CAE4B"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/controller/DashBoard/index.ts"],"names":[],"mappings":";;;;;;AAAA,0FAAkE;AAKhE,mCALK,kCAAwB,CAKL;AAJ1B,oFAA4D;AAK1D,gCALK,+BAAqB,CAKL;AAJvB,oFAA4D;AAK1D,gCALK,+BAAqB,CAKL"}
