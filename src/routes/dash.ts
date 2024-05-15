@@ -19,6 +19,7 @@ router.get("/", authenticateUser, getEmployeeDashBoardData);
 router.get("/admin", authenticateAdmin, getAdminDashBoardData);
 router.get("/admin/performance", authenticateAdmin, getEmployeePerfomance);
 router.get("/employee", authenticateAdmin, getEmployee);
+router.get("/employee/details", authenticateUser, getEmployee);
 router.post("/employee/delete", authenticateAdmin, deleteEmployee);
 router.post("/employee/view", authenticateAdmin, viewEmploye);
 router.post("/employee/salary", authenticateAdmin, raiseSalary);

@@ -12,41 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const errorHandler_1 = __importDefault(require("../../utils/errorHandler"));
-function logOut(req, res) {
+const auth_1 = require("../../model/auth");
+const errorHandler_1 = __importDefault(require("../..//utils/errorHandler"));
+function getEmployeeByEmployee(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            if (req.user) {
-                // Clear cookies
-                const cookies = Object.assign({}, req.cookies); // Create a copy of the cookies object
-                for (const cookieName in cookies) {
-                    // Clear each cookie by setting it to an expired value
-                    res.cookie(cookieName, "", { expires: new Date(0) });
-                }
-                return res.json({
-                    success: true,
-                    message: "Employee Logout Successfully",
-                });
-            }
-            else {
-                return (0, errorHandler_1.default)({
-                    res,
-                    code: 403,
-                    title: "Forbidden",
-                    message: "User Forbidden",
-                });
-            }
+            const employee = yield auth_1.Employee.find({ isDeleted: false })
+                .select(["-password", "-bank", "-salary", "-pan_number"])
+                .populate("roles");
+            res.json({ employee });
         }
         catch (e) {
             return (0, errorHandler_1.default)({
                 res,
                 e,
                 code: 500,
-                title: "Employee Authetication",
-                message: "Server Error on Employee Authetication",
+                title: "Get Employee",
+                message: "Server Error on Getting Employee",
             });
         }
     });
 }
-exports.default = logOut;
-//# sourceMappingURL=logOut.js.map
+exports.default = getEmployeeByEmployee;
+//# sourceMappingURL=getEmployeeByEmployee.js.map

@@ -9,6 +9,7 @@ import deleteEmployee from "./deleteEmployee";
 import viewEmploye from "./viewEmployee";
 import raiseSalary from "./raiseSalary";
 import editEmlpoyee from "./editEmployee";
+import getEmployeeByEmployee from './getEmployeeByEmployee'
 
 export {
   editEmlpoyee,
@@ -22,4 +23,5 @@ export {
   getEmployee,
   deleteEmployee,
   viewEmploye,
+  getEmployeeByEmployee
 };
