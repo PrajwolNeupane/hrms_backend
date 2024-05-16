@@ -14,7 +14,8 @@ app.use(
     origin: [
       process.env.CLIENT_URL,
       process.env.ADMIN_URL,
-      "http://localhost:3001",
+      process.env.LOCAL_CLIENT_URL,
+      process.env.LOCAL_ADMIN_URL,
     ],
     credentials: true,
   })
