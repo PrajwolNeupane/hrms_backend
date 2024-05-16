@@ -9,9 +9,14 @@ import deleteEmployee from "./deleteEmployee";
 import viewEmploye from "./viewEmployee";
 import raiseSalary from "./raiseSalary";
 import editEmlpoyee from "./editEmployee";
-import getEmployeeByEmployee from './getEmployeeByEmployee'
+import getEmployeeByEmployee from "./getEmployeeByEmployee";
+import profile from "./profile";
+import updateProfile from "./updateProfile";
+import updateBank from "./updateBank";
+import employeeResetPassword from "./employeeResetPassword";
 
 export {
+  updateProfile,
   editEmlpoyee,
   raiseSalary,
   logIn,
@@ -23,5 +28,8 @@ export {
   getEmployee,
   deleteEmployee,
   viewEmploye,
-  getEmployeeByEmployee
+  getEmployeeByEmployee,
+  profile,
+  updateBank,
+  employeeResetPassword,
 };

@@ -13,45 +13,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const errorHandler_1 = __importDefault(require("../../utils/errorHandler"));
-function logOut(req, res) {
+const auth_1 = require("../../model/auth");
+function profile(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            if (req.user) {
-                // Clear the auth_token cookie
-                res.clearCookie("auth_token", {
-                    httpOnly: true,
-                    sameSite: "none", // Change to 'none' if served over HTTPS
-                    secure: true, // Only set this if served over HTTPS
-                });
-                // Clear other cookies if needed
-                // const cookies = { ...req.cookies };
-                // for (const cookieName in cookies) {
-                //   res.clearCookie(cookieName);
-                // }
-                return res.json({
-                    success: true,
-                    message: "Employee Logout Successfully",
-                });
-            }
-            else {
-                return (0, errorHandler_1.default)({
-                    res,
-                    code: 403,
-                    title: "Forbidden",
-                    message: "User Forbidden",
-                });
-            }
+            var employee = yield auth_1.Employee.findById(req.user)
+                .select(["-password"])
+                .populate("roles", "-__v")
+                .populate("bank", "-__v");
+            return res.json({
+                succes: true,
+                message: "Employee Logged In",
+                employee,
+            });
         }
         catch (e) {
             return (0, errorHandler_1.default)({
                 res,
                 e,
                 code: 500,
-                title: "Employee Authetication",
-                message: "Server Error on Employee Authetication",
+                title: "Employee ",
+                message: "Server Error on Employee Profile",
             });
         }
     });
 }
-exports.default = logOut;
-//# sourceMappingURL=logOut.js.map
+exports.default = profile;
+//# sourceMappingURL=profile.js.map

@@ -10,6 +10,7 @@ import {
   logIn,
   forgetPassword,
   resetPassword,
+  employeeResetPassword
 } from "../controller/Employee";
 import {
   changePassword,
@@ -25,6 +26,7 @@ router.get("/", authenticateUser, auth);
 router.get("/signout", authenticateUser, logOut);
 router.post("/forgetpassword", forgetPassword);
 router.post("/admin/resetpassword", adminResetPassword);
+router.post("/employee/resetpassword", employeeResetPassword);
 router.post("/resetpassword", resetPassword);
 router.post(
   "/employee/signup",

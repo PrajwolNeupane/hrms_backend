@@ -12,6 +12,7 @@ router.get("/", middleware_1.authenticateUser, Employee_1.auth);
 router.get("/signout", middleware_1.authenticateUser, Employee_1.logOut);
 router.post("/forgetpassword", Employee_1.forgetPassword);
 router.post("/admin/resetpassword", Admin_1.resetPassword);
+router.post("/employee/resetpassword", Employee_1.employeeResetPassword);
 router.post("/resetpassword", Employee_1.resetPassword);
 router.post("/employee/signup", [middleware_1.authenticateUser, middleware_1.authenticateAdmin], Employee_1.createEmployee);
 router.post("/employee/signin", Employee_1.logIn);

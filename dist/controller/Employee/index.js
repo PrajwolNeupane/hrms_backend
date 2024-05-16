@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getEmployeeByEmployee = exports.viewEmploye = exports.deleteEmployee = exports.getEmployee = exports.resetPassword = exports.forgetPassword = exports.logOut = exports.auth = exports.createEmployee = exports.logIn = exports.raiseSalary = exports.editEmlpoyee = void 0;
+exports.employeeResetPassword = exports.updateBank = exports.profile = exports.getEmployeeByEmployee = exports.viewEmploye = exports.deleteEmployee = exports.getEmployee = exports.resetPassword = exports.forgetPassword = exports.logOut = exports.auth = exports.createEmployee = exports.logIn = exports.raiseSalary = exports.editEmlpoyee = exports.updateProfile = void 0;
 const createEmployee_1 = __importDefault(require("./createEmployee"));
 exports.createEmployee = createEmployee_1.default;
 const auth_1 = __importDefault(require("./auth"));
@@ -28,4 +28,12 @@ const editEmployee_1 = __importDefault(require("./editEmployee"));
 exports.editEmlpoyee = editEmployee_1.default;
 const getEmployeeByEmployee_1 = __importDefault(require("./getEmployeeByEmployee"));
 exports.getEmployeeByEmployee = getEmployeeByEmployee_1.default;
+const profile_1 = __importDefault(require("./profile"));
+exports.profile = profile_1.default;
+const updateProfile_1 = __importDefault(require("./updateProfile"));
+exports.updateProfile = updateProfile_1.default;
+const updateBank_1 = __importDefault(require("./updateBank"));
+exports.updateBank = updateBank_1.default;
+const employeeResetPassword_1 = __importDefault(require("./employeeResetPassword"));
+exports.employeeResetPassword = employeeResetPassword_1.default;
 //# sourceMappingURL=index.js.map
