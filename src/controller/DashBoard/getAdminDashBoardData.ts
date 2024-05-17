@@ -11,6 +11,10 @@ const extractHours = (timeString: string): number => {
   return hours;
 };
 
+interface EmployeeAttendedPerDayType {
+  [date: number]: Set<string>;
+}
+
 export default async function getAdminDashBoardData(
   req: Request,
   res: Response<any>
@@ -53,6 +57,9 @@ export default async function getAdminDashBoardData(
       employeeCreated[creationMonth]++;
     });
 
+    // Initialize an object to store the set of employee IDs present on each day
+    const employeeAttendedPerDay: EmployeeAttendedPerDayType = {};
+
     // Iterate through attendance records to count employees present for each date and calculate work hours
     const attendanceRecords = await Attendance.find({
       createdAt: {
@@ -61,9 +68,27 @@ export default async function getAdminDashBoardData(
       },
     });
 
+    const employeesAttendedToday = new Set();
+
     attendanceRecords.forEach((record) => {
       const attendanceDate = new Date(record.createdAt).getDate();
-      employeeAttendance[attendanceDate - 1]++;
+
+      // Initialize the set for the current day if it doesn't exist
+      if (!employeeAttendedPerDay[attendanceDate]) {
+        employeeAttendedPerDay[attendanceDate] = new Set();
+      }
+
+      const employeeIdString = record.employee_id.toString();
+
+      // If the employee ID is not already in the set for this day
+      if (!employeeAttendedPerDay[attendanceDate].has(employeeIdString)) {
+        employeeAttendedPerDay[attendanceDate].add(employeeIdString);
+        employeeAttendance[attendanceDate - 1]++;
+      }
+
+      employeesAttendedToday.add(record.employee_id);
+
+
       if (record.clockOut) {
         const diff = timeDifferenceFinder(record.clockIn, record.clockOut);
         const totalHoursWorkedForDay = sumTime(
@@ -111,8 +136,22 @@ export default async function getAdminDashBoardData(
       totalHoursWorkedThisWeek = sumTime(totalHoursWorkedThisWeek, hours);
     });
 
-    // Extract only the hours portion from the total hours worked this week
-    const totalHoursThisWeekHours = extractHours(totalHoursWorkedThisWeek);
+    // Convert totalHoursWorkedThisWeek to a number of hours
+    const [hoursStr, minutesStr] = totalHoursWorkedThisWeek.split(":");
+    const totalHoursWorkedThisWeekInHours =
+      parseInt(hoursStr, 10) + parseInt(minutesStr, 10) / 60;
+
+    // Calculate the remaining hours and minutes
+    let totalHoursThisWeek = Math.floor(totalHoursWorkedThisWeekInHours);
+    let totalMinutesThisWeek = Math.round(
+      (totalHoursWorkedThisWeekInHours - totalHoursThisWeek) * 60
+    );
+
+    // If minutes are negative, add 60 and subtract 1 from hours
+    if (totalMinutesThisWeek < 0) {
+      totalMinutesThisWeek += 60;
+      totalHoursThisWeek -= 1;
+    }
 
     // Extract only the hours portion from each day's work hours
     const employeeWorkHourHours = employeeWorkHour.map((time) =>
@@ -123,7 +162,8 @@ export default async function getAdminDashBoardData(
       employeeCount,
       employeesPresentToday,
       employeesAbsentToday,
-      totalHoursThisWeek: totalHoursThisWeekHours,
+      totalHoursThisWeek,
+      totalMinutesThisWeek,
       employeeCreated,
       employeeAttendance,
       employeeWorkHour: employeeWorkHourHours,
