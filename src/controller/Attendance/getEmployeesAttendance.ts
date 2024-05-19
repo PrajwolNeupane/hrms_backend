@@ -18,7 +18,7 @@ export default async function getEmployeesAttendance(
       path: "employee_id",
       populate: { path: "roles" }, // Populate the roles field
     });
-    
+
     const employeesPresent = attendance.reduce((acc, curr) => {
       if (curr.clockIn && curr.clockOut) {
         acc.push({
@@ -27,6 +27,14 @@ export default async function getEmployeesAttendance(
           clockOut: curr.clockOut,
           createdAt: curr.createdAt,
           timeDifference: timeDifferenceFinder(curr?.clockIn, curr?.clockOut),
+        });
+      } else if (curr.clockIn) {
+        acc.push({
+          employee: curr.employee_id,
+          clockIn: curr.clockIn,
+          clockOut: "---",
+          createdAt: curr.createdAt,
+          timeDifference: "---",
         });
       }
       return acc;

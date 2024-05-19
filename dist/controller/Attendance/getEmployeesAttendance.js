@@ -38,6 +38,15 @@ function getEmployeesAttendance(req, res) {
                         timeDifference: (0, timeDifferenceFinder_1.default)(curr === null || curr === void 0 ? void 0 : curr.clockIn, curr === null || curr === void 0 ? void 0 : curr.clockOut),
                     });
                 }
+                else if (curr.clockIn) {
+                    acc.push({
+                        employee: curr.employee_id,
+                        clockIn: curr.clockIn,
+                        clockOut: "---",
+                        createdAt: curr.createdAt,
+                        timeDifference: "---",
+                    });
+                }
                 return acc;
             }, []);
             res.status(200).json(employeesPresent);

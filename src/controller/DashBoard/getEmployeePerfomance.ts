@@ -90,17 +90,21 @@ export default async function getEmployeePerfomance(
         Math.floor((currentDate * 5) / 7) +
         (currentDate % 7 > 0 ? (currentDate % 7 < 6 ? 1 : 0) : 0); // Assuming 5 working days per week
 
-      const attendanceDaysThisMonth = employeeAttendance.filter((record) => {
+      const uniqueDates = new Set();
+
+      employeeAttendance.filter((record) => {
         const recordDate = new Date(record.createdAt);
-        return (
+        if (
           recordDate.getMonth() === currentMonth &&
           recordDate.getFullYear() === currentYear &&
           recordDate.getDate() <= new Date().getDate()
-        );
-      }).length;
+        ) {
+          const dateString = recordDate.toDateString();
+          uniqueDates.add(dateString);
+        }
+      });
 
-      const totalAbsentThisMonth =
-        expectedWorkingDays - attendanceDaysThisMonth;
+      const totalAbsentThisMonth = expectedWorkingDays - uniqueDates.size;
 
       employeePerformanceData.push({
         first_name: employee.first_name,
