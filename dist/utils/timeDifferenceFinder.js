@@ -16,7 +16,7 @@ function timeDifferenceFinder(clockIn, clockOut) {
     let diffMinutes = Math.floor((diffMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
     // If the time difference is negative, add 24 hours
     if (diffHours < 0) {
-        diffHours += 24;
+        diffHours = 24 + diffHours;
     }
     if (diffMinutes < 0) {
         diffMinutes = -diffMinutes;
